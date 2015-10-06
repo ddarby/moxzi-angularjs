@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="css/gridster.css" />
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+  <script src="js/jquery.js"></script>
+
+</head>
+<style>
+  .scene-content {
+    width: 25%;
+  }
+
+  .scene-content-underlay {
+    width: 25%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  .scene-content-overlay > .jumbotron{
+    width: 25%;
+    background-color: #000000 !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    opacity: 0.9;
+  }
+</style>
+
+<body>
+  <div class="scene-content">
+    <div class="scene-content scene-content-overlay">
+      <div class="jumbotron">
+        <h2>The Fools Folly</h2>
+        <p>The young man enters a small pub outside the edge of ......</p>
+        <p><a class="btn btn-primary btn-lg center-block" href="#" role="button">Edit</a></p>
+      </div>
+    </div>
+
+    <div class="scene-content scene-content-underlay">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Check me out
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+  <script src="https://code.angularjs.org/1.2.15/angular-route.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+
+</html>
