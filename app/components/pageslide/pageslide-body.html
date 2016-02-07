@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Menu
+        <span class="glyphicon glyphicon-chevron-left pull-right"
+              ng-click="toggle($event)"
+              aria-label="Close">
+        </span>
+    </div>
+    <div class="panel-body pageslide-body">
+
+      <div class="btn-group-vertical btn-width">
+          <a class="btn animated-fill green btn-width"
+             ng-click="toggle()" 
+             ui-sref="home">Home 
+          </a>
+
+          <a class="btn animated-fill purple btn-width"
+             ng-click="toggle()"
+             ui-sref="git-status">Git Status
+          </a>
+
+          <a class="btn animated-fill purple btn-width"
+             ng-click="toggle()"
+             ui-sref="other">Other
+          </a>
+
+          <a class="btn animated-fill red btn-width"
+             ng-click="toggle()" 
+             ui-sref="about">About
+          </a>
+
+          <a class="btn animated-fill blue btn-width"
+             ng-click="toggle()" 
+             ui-sref="help">Help
+          </a>
+      </div>
+    </div>
+</div>
+
