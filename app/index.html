@@ -8,22 +8,26 @@
         <meta http-equiv="X-UA-Compatible" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <link rel="icon" href="favicons/favicon.ico">
+        <link rel="icon" href="favicons/book.png">
 
         <!--css-->
         <link rel="stylesheet" href="css/mystyles.css">
         <link rel="stylesheet" href="css/loading.css">
         <link rel="stylesheet" href="css/landing.css">
         <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/chat.css">
         <link rel="stylesheet" href="lib/nvd3/build/nv.d3.css">
 
         <!--libraries-->
         <script src="lib/jquery/dist/jquery.min.js"></script> 
         <script src="lib/velocity-animate/velocity.min.js"></script> 
-        <script src="lib/angular/angular.js"></script> 
+        <script src="components/chat/list.js"></script>
+        <script src="components/chat/handlebars.js"></script>
+        <script src="lib/angular/angular.js"></script>
         <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
         <script src="lib/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
+
         <script src="lib/d3/d3.min.js"></script>
         <script src="lib/nvd3/build/nv.d3.min.js"></script>
         <script src="lib/angular-nvd3/dist/angular-nvd3.min.js"></script>
@@ -40,6 +44,7 @@
         <script src="components/pageslide/pageslide.js"></script>
         <script src="components/pageslide/pageslide-body.js"></script>
         <script src="components/navbar/navbar.js"></script>
+        <script src="components/chat/chat.js"></script>
      <!--services-->
 
         <!--factories-->
@@ -51,6 +56,8 @@
         <script src="git-status/git-status.js"></script>
     </head>
     <body>
+
+
     <div ng-controller="pageslideCtrl">
         <div class="header">
             <div>
@@ -58,7 +65,8 @@
                 <pageslide ps-open="activated"
                            ps-side="left"
                            ps-body-class="true">
-                    <page-slide-body><page-slide-body/>
+                    <page-slide-body>
+                    </page-slide-body>
                 </pageslide>
             </div>
             <div ng-if="isLoading"
@@ -70,6 +78,30 @@
         
         <div class="spacing-from-navbar">
             <div ui-view></div>
+        </div>
+    </div>
+
+    <div ng-controller="ChatBoxCtrl as chatBox">
+        <litter-box ng-show="chatBox.toggler">
+        </litter-box>
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="navbar-header">
+                <a class="navbar-brand"
+                   href="#">Mokzi Reader
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a class="navbar-brand" href="#">
+                            <img height="20"
+                                 alt="LitterBox"
+                                 ng-click="chatBox.toggle()">
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     </body>

@@ -105,7 +105,8 @@
             'ui.bootstrap',
             'ncy-angular-breadcrumb',
             'shared.widgets',
-            'gitmodule'
+            'gitmodule',
+            'mokzi-app.chat'
         ]
     );
     
