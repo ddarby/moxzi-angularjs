@@ -10,16 +10,39 @@
 
         chatBox.toggler = true;
 
-        chatBox.toggle = function (){
+        chatBox.toggle = function() {
             chatBox.toggler = !chatBox.toggler;
             return chatBox.toggler;
         }
     }
 
-    function litterBox() {
+    function getMessageResponseTemplate(user, message) {
+        return $.parseHTML(
+           '<li>'+
+               '<div class="message-data">'+
+                   '<span class="message-data-name"><i class="fa fa-circle online"></i>' + user + '</span>'+
+                   '<span class="message-data-time" ng-bind="contextResponse.time">' + moment().calendar() + '</span>'+
+               '</div>'+
+               '<div class="message my-message">' + message + '</div>'+
+           '</li>'
+        );
+    }
+
+    function getMessageTemplate(user, message) {
+        return $.parseHTML(
+           '<li class="clearfix">'+
+               '<div class="message-data align-right">'+
+                   '<span class="message-data-time">' + moment().calendar() + '</span>  &nbsp; &nbsp;' +
+                   '<span class="message-data-name"><i class="fa fa-circle me"></i>' + user + '</span>'+
+               '</div>'+
+               '<div class="message other-message float-right">' + message + '</div>'+
+           '</li>'
+        );
+    }
+
+    function litterBox($compile) {
 
         function link(scope, element, attrs) {
-
             var chat = {
                 messageToSend: '',
                 messageResponses: [
@@ -48,25 +71,14 @@
                 render: function() {
                     this.scrollToBottom();
                     if (this.messageToSend.trim() !== '') {
-                        var template = Handlebars.compile($("#message-template").html());
-                            var context = {
-                            messageOutput: this.messageToSend,
-                            time: this.getCurrentTime()
-                        };
-
-                        this.$chatHistoryList.append(template(context));
+                        var otherUser = "stan";
+                        var user = "dee"
+                        this.$chatHistoryList.append(getMessageTemplate(user, this.messageToSend));
                         this.scrollToBottom();
                         this.$textarea.val('');
 
-                        // responses
-                        var templateResponse = Handlebars.compile($("#message-response-template").html());
-                            var contextResponse = {
-                            response: this.getRandomItem(this.messageResponses),
-                            time: this.getCurrentTime()
-                        };
-
                         setTimeout(function() {
-                            this.$chatHistoryList.append(templateResponse(contextResponse));
+                            this.$chatHistoryList.append(getMessageResponseTemplate(otherUser, this.getRandomItem(this.messageResponses)));
                             this.scrollToBottom();
                         }.bind(this), 1500);
 
@@ -123,7 +135,9 @@
 
     ChatBoxCtrl.$inject = [];
 
-    litterBox.$inject = [];
+    litterBox.$inject = [
+        '$compile'
+    ];
 
 }());
 
